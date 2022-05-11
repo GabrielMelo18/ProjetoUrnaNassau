@@ -31,8 +31,12 @@ public class Candidates {
 		votes++;
 	}
 
-	private int getVotes() {
+	public int getVotes() {
 		return votes;
+	}
+
+	public static Object get(int i) {
+		return null;
 	}
 
 }
