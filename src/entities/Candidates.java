@@ -2,41 +2,34 @@ package entities;
 
 public class Candidates {
 
-	private String number;
-	private String name;
-	private String party;
+	private String nome;
+	private String partido;
+	private String numero;
+	int votos = 0;
 
-	int votes = 0;
-
-	public Candidates(String number, String name, String party) {
-
-		this.number = number;
-		this.name = name;
-		this.party = party;
+	public Candidates(String numero, String nome, String partido) {
+		this.numero = numero;
+		this.nome = nome;
+		this.partido = partido;
 	}
 
-	public String getNumber() {
-		return number;
+	public void Votar() {
+		votos++;
 	}
 
-	public String getName() {
-		return name;
+	public int getVotos() {
+		return votos;
 	}
 
-	public String getParty() {
-		return party;
+	public String getNumero() {
+		return numero;
 	}
 
-	public void vote() {
-		votes++;
+	public String getNome() {
+		return nome;
 	}
 
-	public int getVotes() {
-		return votes;
+	public String getPartido() {
+		return partido;
 	}
-
-	public static Object get(int i) {
-		return null;
-	}
-
 }

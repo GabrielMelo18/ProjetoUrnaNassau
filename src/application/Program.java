@@ -8,44 +8,44 @@ import entities.Candidates;
 public class Program {
 
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		int ent;
-		ArrayList<Candidates> Candidate = new ArrayList<Candidates>();
+		ArrayList<Candidates> Candidatos = new ArrayList<Candidates>();
+		Scanner e = new Scanner(System.in);
+		int op;
 		do {
 			System.out.println("Cadastrar 1 ");
 			System.out.println("Consultar 2");
 			System.out.println("Votar     3");
 			System.out.println("Finalizar 4");
-			ent = in.nextInt();
-			
-			if(ent == 1) {
-				System.out.println("Digite o numero:");
-				String number = in.next();
-				System.out.println("Digite o nome:");
-				String name = in.next();
-				System.out.println("Digite o partido");
-				String party = in.next();
-				Candidate.add(new Candidates(number, name, party));
-			} else if (ent == 2) {
-            System.out.println("Digite um numero");
-            String n = in.next();
-            for (int i = 0; i < Candidate.size(); i++) {
-                if (Candidate.get(i).getNumber().equals(n)) {
-                    System.out.println(Candidate.get(i).getName() + ", " + ((Candidates) Candidates.get(i)).getParty() + ", " + Candidate.get(i).getVotes());
-                }
-            }
-        } else if (ent == 3) {
-            System.out.println("Digite um numero de quem deseja votar");
-            String n = in.next();
-            int i = 0;
-            for (; i < Candidate.size(); i++) {
-                if (Candidate.get(i).getNumber().equals(n)) {
-                    break;
-                }
-            }
-		
-		in.close();
-        	}
-		} while (ent !=4 );
+			op = e.nextInt();
+			if (op == 1) {
+				System.out.println("digite o numero");
+				String numero = e.next();
+				System.out.println("digite o nome ");
+				String nome = e.next();
+				System.out.println("digite o partido");
+				String partido = e.next();
+				Candidatos.add(new Candidates(numero, nome, partido));
+			} else if (op == 2) {
+				System.out.println("Digite um numero");
+				String n = e.next();
+				for (int i = 0; i < Candidatos.size(); i++) {
+					if (Candidatos.get(i).getNumero().equals(n)) {
+						System.out.println(Candidatos.get(i).getNome() + ", " + Candidatos.get(i).getPartido() + ", "
+								+ Candidatos.get(i).getVotos());
+					}
+				}
+			} else if (op == 3) {
+				System.out.println("Digite um numero de quem deseja votar");
+				String n = e.next();
+				int i = 0;
+				for (; i < Candidatos.size(); i++) {
+					if (Candidatos.get(i).getNumero().equals(n)) {
+						break;
+					}
+				}
+				if (i != Candidatos.size())
+					Candidatos.get(i).Votar();
+			}
+		} while (op != 4);
 	}
 }
