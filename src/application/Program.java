@@ -1,3 +1,12 @@
+//-----PROJETO URNA ELETRONICA-----------
+
+//iNTEGRANTES:
+
+// ÍTALO CALÁBRIA DE PAULA BAPTISTA XAVIER 01468472
+// CAUÃ SIQUEIRA CARNEIRO DA CUNHA 01432916
+// LUCAS SOARES RIBEIRO SAUVINO BEZERRA 01457146
+// JOSÉ GABRIEL DE MELO MENDONÇA 01453018
+
 package application;
 
 import java.util.ArrayList;
@@ -11,11 +20,16 @@ public class Program {
 		ArrayList<Candidates> Candidatos = new ArrayList<Candidates>();
 		Scanner e = new Scanner(System.in);
 		int op;
+		int votos = 0;
 		do {
+			System.out.println("----------URNA ELETRONICA-----------");
+			System.out.println("*VOTAÇÕES 2022* ");
 			System.out.println("Cadastrar 1 ");
 			System.out.println("Consultar 2");
 			System.out.println("Votar     3");
-			System.out.println("Finalizar 4");
+			System.out.println("Mostrar votos 4");
+			System.out.println("Finalizar 5");
+			System.out.println("----------URNA ELETRONICA-----------");
 			op = e.nextInt();
 			if (op == 1) {
 				System.out.println("digite o numero");
@@ -30,8 +44,7 @@ public class Program {
 				String n = e.next();
 				for (int i = 0; i < Candidatos.size(); i++) {
 					if (Candidatos.get(i).getNumero().equals(n)) {
-						System.out.println(Candidatos.get(i).getNome() + ", " + Candidatos.get(i).getPartido() + ", "
-								+ Candidatos.get(i).getVotos());
+						System.out.println(Candidatos.get(i).getNome() + ", " + Candidatos.get(i).getPartido());
 					}
 				}
 			} else if (op == 3) {
@@ -45,7 +58,24 @@ public class Program {
 				}
 				if (i != Candidatos.size())
 					Candidatos.get(i).Votar();
+
+			} else if (op == 4) {
+				for (int i = 0; i < Candidatos.size(); i++) {
+					System.out.println("Votos: " + Candidatos.get(i).getNome() + " - " + Candidatos.get(i).getPartido()
+							+ " - " + Candidatos.get(i).getNumero() + " - " + Candidatos.get(i).getVotos());
+				}
+				int x = 0;
+				int total = 0;
+				for (int i = 0; i < Candidatos.size(); i++) {
+					x = Candidatos.get(i).getVotos();
+					total += x;
+					
+				}
+				System.out.println("total votos: " + total);
+
 			}
-		} while (op != 4);
+		} while (op != 5);
+
+		e.close();
 	}
 }
